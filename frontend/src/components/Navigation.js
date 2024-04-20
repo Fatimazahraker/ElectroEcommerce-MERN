@@ -3,7 +3,7 @@ import { Navbar, Button, Nav, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Navigation.css";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../feautures/userSlice";
+import { logout } from "../features/userSlice";
 
 function Navigation() {
   const user = useSelector((state) => state.user);
