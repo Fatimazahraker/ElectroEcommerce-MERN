@@ -6,9 +6,10 @@ import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login'
-
+import { useSelector } from 'react-redux';
 
 function App() {
+  const user = useSelector((state) => state.user);
   return (
     <div className="App">
       
@@ -16,8 +17,12 @@ function App() {
       <Navigation />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        {!user && (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </>
+          )}
         <Route path="*" element={<Home />} />
       </Routes>
       </BrowserRouter>

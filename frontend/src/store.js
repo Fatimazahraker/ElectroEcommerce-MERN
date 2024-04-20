@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import productSlice from './features/productSlice';
 import userSlice from './features/userSlice';
 import appApi from './services/appApi';
-
+import thunk from "redux-thunk";
 
 //reducers
 const reducer = combineReducers({
@@ -26,6 +26,7 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 // Creating the store
 const store = configureStore({
     reducer: persistedReducer,
+    middleware: [thunk, appApi.middleware],
 });
 
 export default store;

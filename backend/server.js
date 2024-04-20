@@ -19,6 +19,8 @@ const userRoutes = require('./routes/userRoutes');
 app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+// Register routes
 app.use('/users', userRoutes);
 
 
