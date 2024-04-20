@@ -10,3 +10,7 @@ mongoose.connect(connectionStr, {useNewUrlParser: true})
 
 // Electrocommerce
 // ZmTQtRtsZo5YxBra
+
+mongoose.connection.on('error', err => {
+    console.log(err)
+  })
