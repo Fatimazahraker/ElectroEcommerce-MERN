@@ -5,7 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
-import Login from './pages/Login'
+import Login from './pages/Login';
+import NewProduct from './pages/NewProduct';
+import CategoryPage from "./pages/CategoryPage";
 import { useSelector } from 'react-redux';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
             <>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/category/:category" element={<CategoryPage />} />
+              <Route path="/new-product" element={<NewProduct />} />
             </>
           )}
         <Route path="*" element={<Home />} />
