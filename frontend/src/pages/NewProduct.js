@@ -5,7 +5,7 @@ import { useCreateProductMutation } from '../services/appApi'
 import { useNavigate } from 'react-router-dom';
 import { Col, Container, Row, Alert, Form, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import axios from "../axios";
+import axios from "../axios.js";
 
 function NewProduct() {
   const [name, setName] = useState("");
