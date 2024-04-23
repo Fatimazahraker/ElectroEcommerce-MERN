@@ -15,6 +15,8 @@ const io = new Server(server, {
 
 const User = require('./models/User');
 const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/ProductRoutes');
+const imageRoutes = require('./routes/imageRoutes');
 
 app.use(cors());
 app.use(express.urlencoded({extended: true}));
@@ -22,7 +24,8 @@ app.use(express.json());
 
 // Register routes
 app.use('/users', userRoutes);
-
+app.use('/products', productRoutes);
+app.use('/images', imageRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on ${port}`);

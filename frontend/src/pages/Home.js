@@ -4,8 +4,16 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import categories from "../categories";
 import "./Home.css";
+import ProductPreview from '../components/ProductPreview';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProducts } from '../features/productSlice';
 
 function Home() {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+  const reversedProducts = [...products].reverse();
+  const lastProducts = reversedProducts.slice(0, 8);
+
 
 
   return (
@@ -15,7 +23,9 @@ function Home() {
         <h2>Last products</h2>
         {/* last products here */}
         <div className='d-flex justify-content-center flex-wrap'>
-         
+            {lastProducts.map((product) => (
+            <ProductPreview key={product._id} {...product} />
+          ))}
         </div>
         <div>
             <Link to="/category/all" style={{ textAlign: "right", display: "block", textDecoration: "none" }}>
