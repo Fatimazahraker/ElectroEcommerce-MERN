@@ -1,4 +1,4 @@
-import axios from "../axios.js";
+import axios from "../axios";
 import React, { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -9,6 +9,7 @@ import Loading from "../components/Loading";
 import SimilarProduct from "../components/SimilarProduct";
 import "./ProductPage.css";
 import { LinkContainer } from "react-router-bootstrap";
+import { useAddToCartMutation } from "../services/appApi";
 import ToastMessage from "../components/ToastMessage";
 
 
@@ -17,6 +18,7 @@ function ProductPage() {
     const user = useSelector((state) => state.user);
     const [product, setProduct] = useState(null);
     const [similar, setSimilar] = useState(null);
+    const [addToCart, { isSuccess }] = useAddToCartMutation();
     
 
     const handleDragStart = (e) => e.preventDefault();
@@ -62,13 +64,24 @@ function ProductPage() {
                     <p style={{ textAlign: "justify" }} className="py-3">
                         <strong>Description:</strong> {product.description}
                     </p>
-                 
+                    {user && !user.isAdmin && (
+                        <ButtonGroup style={{width: '90%'}}>
+                            <Form.Select size='lg' style={{ width: '40%', borderRadius: '0'}} >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </Form.Select>
+                            <Button size='lg' onClick={()=> addToCart({userId: user._id, productId: id, price: product.price, image: product.pictures[0].url})}>Add to cart</Button>
+                        </ButtonGroup>
+                    )}
                     {user && user.isAdmin && (
                         <LinkContainer to={`/product/${product._id}/edit`}>
                             <Button size='lg'>Edit Product</Button>
                         </LinkContainer>
                     )}
-                    
+                    {isSuccess && <ToastMessage item={product.name} bg='info' title='Added to cart' body={`${product.name} is in your cart`} />}
                 </Col>
             </Row>
             <div className="ny-4">

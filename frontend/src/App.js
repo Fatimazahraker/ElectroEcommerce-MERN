@@ -6,37 +6,48 @@ import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import NewProduct from './pages/NewProduct';
-import CategoryPage from "./pages/CategoryPage";
 import { useSelector } from 'react-redux';
+import NewProduct from './pages/NewProduct';
 import ProductPage from "./pages/ProductPage";
+import CategoryPage from "./pages/CategoryPage";
+import ScrollToTop from "./components/ScrollToTop";
+import CartPage from "./pages/CartPage";
+
+
+
 
 function App() {
   const user = useSelector((state) => state.user);
   return (
     <div className="App">
-      
       <BrowserRouter>
-      <Navigation />
-      <Routes>
-        <Route index element={<Home />} />
-        {!user && (
+        <ScrollToTop />
+        <Navigation />
+        <Routes>
+          <Route index element={<Home />} />
+          {!user && (
             <>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              
             </>
           )}
+          {user && (
+                        <>
+                            <Route path="/cart" element={<CartPage />} />
+                            
+                        </>
+                    )}
 
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           
           <Route path="/new-product" element={<NewProduct />} />
 
-        <Route path="*" element={<Home />} />
-      </Routes>
+          <Route path="*" element={<Home />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
 }
+
 export default App;
