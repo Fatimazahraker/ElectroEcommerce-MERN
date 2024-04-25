@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import axios from "../axios";
+=======
+import axios from "../axios.js";
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
 import React, { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -9,7 +13,10 @@ import Loading from "../components/Loading";
 import SimilarProduct from "../components/SimilarProduct";
 import "./ProductPage.css";
 import { LinkContainer } from "react-router-bootstrap";
+<<<<<<< HEAD
 import { useAddToCartMutation } from "../services/appApi";
+=======
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
 import ToastMessage from "../components/ToastMessage";
 
 
@@ -18,7 +25,10 @@ function ProductPage() {
     const user = useSelector((state) => state.user);
     const [product, setProduct] = useState(null);
     const [similar, setSimilar] = useState(null);
+<<<<<<< HEAD
     const [addToCart, { isSuccess }] = useAddToCartMutation();
+=======
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
     
 
     const handleDragStart = (e) => e.preventDefault();
@@ -64,6 +74,7 @@ function ProductPage() {
                     <p style={{ textAlign: "justify" }} className="py-3">
                         <strong>Description:</strong> {product.description}
                     </p>
+<<<<<<< HEAD
                     {user && !user.isAdmin && (
                         <ButtonGroup style={{width: '90%'}}>
                             <Form.Select size='lg' style={{ width: '40%', borderRadius: '0'}} >
@@ -76,12 +87,19 @@ function ProductPage() {
                             <Button size='lg' onClick={()=> addToCart({userId: user._id, productId: id, price: product.price, image: product.pictures[0].url})}>Add to cart</Button>
                         </ButtonGroup>
                     )}
+=======
+                 
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
                     {user && user.isAdmin && (
                         <LinkContainer to={`/product/${product._id}/edit`}>
                             <Button size='lg'>Edit Product</Button>
                         </LinkContainer>
                     )}
+<<<<<<< HEAD
                     {isSuccess && <ToastMessage item={product.name} bg='info' title='Added to cart' body={`${product.name} is in your cart`} />}
+=======
+                    
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
                 </Col>
             </Row>
             <div className="ny-4">

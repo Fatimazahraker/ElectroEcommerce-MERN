@@ -10,11 +10,16 @@ import { useSelector } from 'react-redux';
 import NewProduct from './pages/NewProduct';
 import ProductPage from "./pages/ProductPage";
 import CategoryPage from "./pages/CategoryPage";
+<<<<<<< HEAD
 import ScrollToTop from "./components/ScrollToTop";
 import CartPage from "./pages/CartPage";
 
 
 
+=======
+import { useSelector } from 'react-redux';
+import ProductPage from "./pages/ProductPage";
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -29,6 +34,7 @@ function App() {
             <>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+<<<<<<< HEAD
             </>
           )}
           {user && (
@@ -37,14 +43,24 @@ function App() {
                             
                         </>
                     )}
+=======
+              
+            </>
+          )}
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
 
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           
           <Route path="/new-product" element={<NewProduct />} />
 
+<<<<<<< HEAD
           <Route path="*" element={<Home />} />
         </Routes>
+=======
+        <Route path="*" element={<Home />} />
+      </Routes>
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
       </BrowserRouter>
     </div>
   );

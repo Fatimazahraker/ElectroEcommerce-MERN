@@ -30,7 +30,10 @@ app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/images', imageRoutes);
 
+<<<<<<< HEAD
 // Start the server and listen on the specified port
+=======
+>>>>>>> 44a9e297f710a3d230fd145e4c885b602a85a437
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
